@@ -3,788 +3,997 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kincsek Művészeti Klub - Gyermek Művészeti Foglalkozások Budapest</title>
-    <meta name="google-site-verification" content="HKlzUPmHD8VxrBPyCwuBod6qoaBMAw-da0T028qw_8s" />
-    <meta name="description" content="Kincsek Művészeti Klub - kreatív művészeti foglalkozások gyerekeknek Budapesten. Rajzolás, festés, kézműves programok szerető környezetben.">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Favicon és logó metaadatok -->
-<link rel="icon" href="/favicon.png" type="image/png" sizes="512x512">
-<link rel="apple-touch-icon" href="/favicon.png">
-<meta name="theme-color" content="#2c6900">
-
-<!-- Strukturált adat a Google-nek -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Kincsek Művészeti Klub",
-  "url": "https://kincsekklub.hu",
-  "logo": "https://kincsekklub.hu/favicon.png"
-}
-</script>
-
+    <title>PartySchedule - Rendezvényszervezés</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Nunito:wght@300;400;700&display=swap');
-
-        :root {
-            --primary-color: #2c6900;
-            --secondary-color: #4ecdc4;
-            --accent-color: #ffd93d;
-            --dark-bg: #2d3561;
-            --light-bg: #f5fff8;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Nunito', sans-serif;
-            color: #333;
+            font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Quicksand', sans-serif;
+        /* Színes gradient csík a tetején */
+        .top-gradient {
+            height: 8px;
+            background: linear-gradient(90deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 2000;
+        }
+
+        header {
+            background: #000;
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 8px;
+            z-index: 1000;
+            border-bottom: 1px solid #222;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: #fff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .logo-text {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: #fff;
+            text-transform: lowercase;
+            letter-spacing: -1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
             font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
         }
 
-        .navbar {
-            background-color: rgba(45, 53, 97, 0.95) !important;
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        nav a:hover {
+            color: #ff00ff;
         }
 
-        .navbar-brand {
-            font-family: 'Quicksand', sans-serif;
-            font-size: 1.8rem;
+        .lang-selector {
+            color: #fff;
             font-weight: 700;
-            color: var(--accent-color) !important;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            cursor: pointer;
         }
 
-        .nav-link {
-            color: #fff !important;
-            margin: 0 0.5rem;
-            transition: color 0.3s ease;
-            font-weight: 600;
-        }
-
-        .nav-link:hover {
-            color: var(--primary-color) !important;
-        }
-
-        .hero-section {
+        /* Hero Section */
+        .hero {
             height: 100vh;
-            background: linear-gradient(135deg, rgba(122, 201, 67, 0.8), rgba(78, 205, 196, 0.8)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23ffd93d" width="1200" height="600"/><circle fill="%237ac943" cx="200" cy="150" r="80" opacity="0.3"/><circle fill="%234ecdc4" cx="900" cy="400" r="120" opacity="0.3"/><circle fill="%2396d35f" cx="600" cy="250" r="100" opacity="0.3"/></svg>') center/cover no-repeat;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><rect fill="%23000"/></svg>');
+            background-size: cover;
+            background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;
-            margin-top: 56px;
             position: relative;
-            overflow: hidden;
+            margin-top: 78px;
         }
 
-        .hero-section::before {
-            content: '🎨 🦋 🌈 ✨ 🎭 🖌️';
+        .hero::before {
+            content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            font-size: 3rem;
-            opacity: 0.2;
-            animation: float 20s infinite linear;
-        }
-
-        @keyframes float {
-            from { transform: translateX(-100%); }
-            to { transform: translateX(100%); }
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,0,255,0.3), rgba(0,255,255,0.2));
         }
 
         .hero-content {
             position: relative;
             z-index: 1;
-        }
-
-        .hero-content h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
-            animation: bounceIn 1s;
-        }
-
-        @keyframes bounceIn {
-            0% { transform: scale(0.3); opacity: 0; }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        .hero-content p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .btn-custom {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
-            font-weight: 700;
-            border: none;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(122, 201, 67, 0.4);
-        }
-
-        .btn-custom:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 6px 25px rgba(122, 201, 67, 0.6);
-            color: white;
-        }
-
-        section {
-            padding: 5rem 0;
-        }
-
-        .section-title {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-align: center;
-        }
-
-        .section-subtitle {
-            font-size: 1.2rem;
-            color: #666;
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        #rolunk {
-            background: linear-gradient(135deg, #fff5f8 0%, #f0f9ff 100%);
-        }
-
-        #rolunk img {
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(122, 201, 67, 0.3);
-            width: 100%;
-            height: auto;
-        }
-
-        #rolunk p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #555;
-        }
-
-        .highlight-box {
-            background: white;
+            max-width: 900px;
             padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-            border-left: 5px solid var(--primary-color);
         }
 
-        .card {
-            border: none;
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            height: 100%;
-            background: white;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(122, 201, 67, 0.3);
-        }
-
-        .card-img-top {
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .card-title {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            font-weight: 700;
-        }
-
-        .card-text {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        .program-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        #galeria {
-            background: linear-gradient(135deg, #fff0f5 0%, #e0f7fa 100%);
-        }
-
-        .gallery-img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .gallery-img:hover {
-            transform: scale(1.05) rotate(2deg);
-            box-shadow: 0 10px 30px rgba(122, 201, 67, 0.4);
-        }
-
-        .contact-info {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .contact-info i {
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            margin-right: 1rem;
-        }
-
-        .contact-info p {
-            font-size: 1.1rem;
+        .hero-label {
+            color: #ff00ff;
+            font-size: 1rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
             margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            line-height: 1.1;
+        }
+
+        .hero-buttons {
             display: flex;
-            align-items: center;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
-        .form-control, .form-select {
-            border: 2px solid #e0e0e0;
-            padding: 0.8rem;
-            border-radius: 10px;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-control:focus, .form-select:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.2rem rgba(122, 201, 67, 0.25);
-        }
-
-        footer {
-            background: linear-gradient(135deg, var(--dark-bg), #1a1f3a);
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
-        }
-
-        footer a {
-            color: var(--accent-color);
+        .btn-primary {
+            padding: 1rem 2.5rem;
+            background: #ff00ff;
+            color: #000;
             text-decoration: none;
-            margin: 0 1rem;
-            font-size: 1.8rem;
-            transition: all 0.3s ease;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: 3px solid #ff00ff;
         }
 
-        footer a:hover {
-            color: var(--primary-color);
-            transform: scale(1.2);
-            display: inline-block;
+        .btn-primary:hover {
+            background: transparent;
+            color: #ff00ff;
+            transform: scale(1.05);
         }
 
-        .modal-content {
-            background-color: transparent;
-            border: none;
+        .btn-secondary {
+            padding: 1rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: 3px solid #fff;
         }
 
-        .modal-body {
-            padding: 0;
+        .btn-secondary:hover {
+            background: #fff;
+            color: #000;
+            transform: scale(1.05);
         }
 
-        .modal-body img {
-            width: 100%;
-            border-radius: 15px;
+        /* Section Styles */
+        section {
+            padding: 6rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            color: #ff00ff;
+            font-size: 0.9rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 4rem;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        /* Szolgáltatások */
+        .services {
+            background: #0a0a0a;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: #111;
+            border: 2px solid #222;
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            border-color: #ff00ff;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(255, 0, 255, 0.3);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .service-card p {
+            color: #999;
+            line-height: 1.6;
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+        }
+
+        /* Csapat szekció */
+        .team {
+            background: #000;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
         }
 
         .team-member {
-            text-align: center;
-            padding: 2rem;
-            background: white;
+            background: #111;
             border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
         }
 
         .team-member:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(78, 205, 196, 0.3);
+            box-shadow: 0 15px 50px rgba(255, 0, 255, 0.4);
         }
 
-        .team-member h4 {
-            color: var(--secondary-color);
+        .team-photo {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, #333, #555);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .team-info {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .team-name {
+            font-size: 1.3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-role {
+            color: #999;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: Arial, sans-serif;
+        }
+
+        .team-contact {
             margin-top: 1rem;
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            background: #ff00ff;
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        /* Blog szekció */
+        .blog {
+            background: #0a0a0a;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .blog-card {
+            background: linear-gradient(135deg, #111, #1a1a1a);
+            border: 2px solid #222;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            border-color: #ff00ff;
+            transform: translateY(-5px);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, #333, #444);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .blog-content {
+            padding: 2rem;
+        }
+
+        .blog-title {
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .blog-excerpt {
+            color: #999;
+            margin-bottom: 1.5rem;
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+        }
+
+        .blog-link {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: #ff00ff;
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .more-blogs {
+            text-align: center;
+        }
+
+        .more-blogs .btn-primary {
+            display: inline-block;
+        }
+
+        /* Rólunk szekció */
+        .about {
+            background: #000;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-images {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .about-image {
+            height: 250px;
+            background: linear-gradient(135deg, #333, #555);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .about-text h2 {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .about-text p {
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            font-size: 1.05rem;
+        }
+
+        /* Galéria karusszel */
+        .performers {
+            background: #0a0a0a;
+        }
+
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            margin: 0 -3rem;
+        }
+
+        .carousel {
+            display: flex;
+            gap: 2rem;
+            padding: 0 3rem;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+        }
+
+        .carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .performer-card {
+            min-width: 350px;
+            background: #111;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .performer-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 50px rgba(255, 0, 255, 0.4);
+        }
+
+        .performer-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #333, #555);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .performer-name {
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #333;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background: #ff00ff;
+        }
+
+        /* Kapcsolat */
+        .contact {
+            background: #000;
+        }
+
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            background: #111;
+            border: 2px solid #333;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1rem;
+            font-family: Arial, sans-serif;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #ff00ff;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: #ff00ff;
+            color: #000;
+            border: none;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(255, 0, 255, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            padding: 3rem;
+            text-align: center;
+            border-top: 2px solid #222;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-info {
+            margin-bottom: 2rem;
+        }
+
+        .footer-info p {
+            color: #999;
+            margin-bottom: 0.5rem;
+            font-family: Arial, sans-serif;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: #111;
+            border: 2px solid #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: #ff00ff;
+            border-color: #ff00ff;
+            color: #000;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 1024px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
-            .hero-content h1 {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 0 1.5rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .hero h1 {
                 font-size: 2.5rem;
             }
 
-            .hero-content p {
-                font-size: 1.2rem;
+            h2 {
+                font-size: 2rem;
             }
 
-            .section-title {
-                font-size: 2rem;
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#hero">
-    <img src="Kincsek logo.jpg" alt="Kincsek Művészeti Klub Logo" style="height: 55px; width: 55px; object-fit: cover; border-radius: 12px; margin-right: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
-    <span>Kincsek Művészeti Klub</span>
-</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#rolunk">Rólunk</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#programjaink">Programjaink</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#galeria">Galéria</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#kapcsolat">Kapcsolat</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#csatlakozz">Csatlakozz!</a>
-                    </li>
-                </ul>
+    <div class="top-gradient"></div>
+    
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">🎉</div>
+                <div class="logo-text">partyschedule</div>
             </div>
-        </div>
-    </nav>
+            <ul>
+                <li><a href="#home">Előadóink</a></li>
+                <li><a href="#services">Rólunk</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Hogyan segíthetünk?</a></li>
+            </ul>
+            <div class="lang-selector">HU ▼</div>
+        </nav>
+    </header>
 
-    <section id="hero" class="hero-section">
+    <section id="home" class="hero">
         <div class="hero-content">
-            <h1> Üdvözlünk a Kincsek Művészeti Klubban! </h1>
-            <p>Ahol minden gyermek kincs, és a kreativitás szárnyra kel</p>
-            <a href="#programjaink" class="btn btn-custom">Fedezd fel programjainkat!</a>
-        </div>
-    </section>
-
-    <section id="rolunk">
-        <div class="container">
-            <h2 class="section-title">✨ Rólunk</h2>
-            <p class="section-subtitle">Minden gyermek egy kincs - nálunk épp úgy vigyázunk rá, mint otthon</p>
-            <div class="row align-items-center mb-5">
-                <div class="col-md-6 mb-4 mb-md-0">
-                    <img src="Zita es Edina.jpg" alt="Művészeti foglalkozás gyerekekkel">
-                </div>
-                <div class="col-md-6">
-                    <p>A <strong>Kincsek Művészeti Klub</strong> Budapesten, Ferencváros szívében született, hogy teret adjon az alkotás, a mozgás, a tánc és a mese varázsának. Hisszük, hogy minden gyermek maga is egy kincs tele ritmussal, színekkel, dallamokkal és álmokkal. Nálunk a tánc, a zene, a mese és a kézműves alkotás összefonódik, hogy a gyerekek szeretetteljes, biztonságos közegben bontakoztathassák ki tehetségüket, fantáziájukat és önkifejezésüket.</p>
-                    <p>📍 <strong>Helyszín:</strong> 1094 Budapest, Tűzoltó utca 68.<br>
-                    🎨 <strong>Korosztály:</strong> 2-12 éves gyerekek számára<br>
-                    👭 <strong>Kis létszámú csoportok:</strong> Minden gyermekre jut figyelem</p>
-                </div>
-            </div>
-
-            <div class="row mt-5">
-                <div class="col-md-6 mb-4">
-                    <div class="team-member">
-                        <span class="program-icon">👧</span>
-                        <h4>Suki Edina</h4>
-                        <p><strong>Óvodapedagógus és néptáncpedagógus</strong></p>
-                        <p>Örömmel vezeti be a gyerekeket a mozgás, a tánc, a zene és a hagyományok világába. Foglalkozásai játékosak, vidámak, tele ritmussal és élményekkel.</p>
-                        <p>📱 <a href="tel:+36205232799" style="color: var(--primary-color); text-decoration: none;">+36 20 523 2799</a></p>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-4">
-                    <div class="team-member">
-                        <span class="program-icon">👧</span>
-                        <h4>Suki Zita</h4>
-                        <p><strong>Óvodapedagógus, család- és gyermekvédelem szakos</strong></p>
-                        <p>Tudatosan figyel a gyermekek érzelmi szükségleteire. Hangsúlyt fektet arra, hogy minden gyermek egyéni tempóban bontakozhasson ki biztonságos környezetben.</p>
-                        <p>📱 <a href="tel:+36205236466" style="color: var(--primary-color); text-decoration: none;">+36 20 523 6466</a></p>
-                    </div>
-                </div>
+            <div class="hero-label">Event Group</div>
+            <h1>Rendezvények<br>Otthona</h1>
+            <div class="hero-buttons">
+                <a href="#services" class="btn-primary">Előadóink</a>
+                <a href="#contact" class="btn-secondary">Lépj velünk kapcsolatba</a>
             </div>
         </div>
     </section>
 
-    <section id="programjaink">
-        <div class="container">
-            <h2 class="section-title">🎭 Programjaink</h2>
-            <p class="section-subtitle">Válassz kedvenceid közül</p>
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <span class="program-icon">📅</span>
-                            <h5 class="card-title">Időszakos gyermekfelügyelet</h5>
-                            <p class="card-text">Nem kell egész napos bölcsőde vagy óvoda! Nálunk akár néhány órára is biztonságban tudhatod gyermekedet. Ideális megoldás ügyintézésre vagy munkára.</p>
-                        </div>
-                    </div>
+    <section id="services" class="services">
+        <div class="section-label">Partyschedule</div>
+        <h2>Szolgáltatásaink</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <div class="service-icon">🎪</div>
+                <h3>Céges Rendezvények</h3>
+                <p>Professzionális céges eseményeket szervezünk, konferenciáktól a csapatépítőkig. Teljes körű koordináció és lebonyolítás.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💍</div>
+                <h3>Esküvők</h3>
+                <p>Álomesküvőd megvalósítása a tervezéstől a megvalósításig. Minden részletre figyelünk, hogy tökéletes legyen a nagy nap.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎂</div>
+                <h3>Születésnapok</h3>
+                <p>Felejthetetlen születésnapi bulik gyerekeknek és felnőtteknek. Egyedi koncepciók és teljes körű szervezés.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎵</div>
+                <h3>Zenés Estek</h3>
+                <p>Koncertek, DJ partik, zenés események profi hangosítással, fénytechnikával és látványvilággal.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎓</div>
+                <h3>Ballagások</h3>
+                <p>Iskolai és egyetemi ballagások teljes körű szervezése. Az ünnepségtől a végzős bulival bezárólag.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎭</div>
+                <h3>Fesztiválok</h3>
+                <p>Nagy volumenű rendezvények komplett logisztikával, technikai háttérrel és színpadi produkcióval.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="team">
+        <div class="section-label">Partyschedule</div>
+        <h2>A Csapatunk</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="team-photo">👨</div>
+                <div class="team-info">
+                    <div class="team-name">Nagy Péter</div>
+                    <div class="team-role">Co-Founder & Chief Commercial Officer</div>
+                    <a href="#" class="team-contact">Kapcsolat</a>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <span class="program-icon">🎨</span>
-                            <h5 class="card-title">MiniKincsek</h5>
-                            <p class="card-text"><strong>1,5 éves kortól óvodakezdésig</strong><br>Miniovi hangulat családias környezetben! Élményalapú művészeti program: zene, mozgás, mese, kézműveskedés.<br><em>Hétfő-Csütörtök: 8:00-12:00</em></p>
-                        </div>
-                    </div>
+            </div>
+            <div class="team-member">
+                <div class="team-photo">👨</div>
+                <div class="team-info">
+                    <div class="team-name">Kovács András</div>
+                    <div class="team-role">Co-Founder & A&R Director</div>
+                    <a href="#" class="team-contact">Kapcsolat</a>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <span class="program-icon">💃</span>
-                            <h5 class="card-title">Népi játék és néptánc</h5>
-                            <p class="card-text"><strong>Hétfő 16:30</strong> - bölcsiseknek<br><strong>Kedd 16:30</strong> - óvodásoknak<br>Fejleszti a mozgáskoordinációt, ritmusérzéket és közösségi élményt ad játékosan.</p>
-                        </div>
-                    </div>
+            </div>
+            <div class="team-member">
+                <div class="team-photo">👨</div>
+                <div class="team-info">
+                    <div class="team-name">Szabó Gábor</div>
+                    <div class="team-role">Co-Founder & Chief Executive Officer</div>
+                    <a href="#" class="team-contact">Kapcsolat</a>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <span class="program-icon">✂️</span>
-                            <h5 class="card-title">Kézműves műhely</h5>
-                            <p class="card-text">Kéthetente! Népi hagyományos technikák (nemezelés, agyagozás, szövés) és modern kreatív módszerek (quilling, decoupage, újrahasznosítás). Minden korosztálynak!</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <span class="program-icon">📚</span>
-                            <h5 class="card-title">Kincsek OviSuli</h5>
-                            <p class="card-text"><strong>Péntek 8:30-15:00</strong><br>Iskolaelőkészítő nagycsoportosoknak! Kirándulások, robotika foglalkozás, kreatív és mozgásos játékok. <em>Helyek száma korlátozott!</em></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <span class="program-icon">🎂</span>
-                            <h5 class="card-title">Szülinap nálunk</h5>
-                            <p class="card-text"><strong>Egyedi, kreatív születésnapi ünneplés!</strong> Két szülinapi tematika közül választhattok! Néptánc foglalkozás tánc, játék, vidámság Élményfestés alkotás, nevetés, színek Bármelyiket választjátok, garantált az élmény és a jókedv!  Foglaljatok időpontot, és legyen ez az ünnep igazán különleges! Keress bátran üzenetben, ha foglalnál vagy kérdésed van! kincsek9@gmail.com</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <span class="program-icon">📚</span>
-                            <h5 class="card-title">Kincsek Táncház</h5>
-                            <p class="card-text"><strong>Táncház mozgás, zene, közösségi élmény</strong>
-                            Zenés-táncos programjainkat bölcsődei, óvodai és iskolai csoportok számára visszük el, mindig az adott ünnephez vagy évszakhoz igazítva.
-                            A gyermekek játékos formában ismerkedhetnek meg a néptánccal, a magyar zenei hagyományokkal és a közösségi együttlét örömével.
-                            Árajánlatkérés:kincsek9@gmail.com</p>
-                        </div>
-                    </div>
+            </div>
+            <div class="team-member">
+                <div class="team-photo">👨</div>
+                <div class="team-info">
+                    <div class="team-name">Kiss Tamás</div>
+                    <div class="team-role">Chief Operating Officer</div>
+                    <a href="#" class="team-contact">Kapcsolat</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="galeria">
-        <div class="container">
-            <h2 class="section-title">📸 Képgaléria</h2>
-            <p class="section-subtitle">Pillantsátok meg klubunk világát</p>
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <img src="kep6.jpg" class="gallery-img" alt="Gyerekek festés közben" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage(this.src)">
+    <section id="blog" class="blog">
+        <div class="section-label">Partyschedule</div>
+        <h2>Blog</h2>
+        <div class="blog-grid">
+            <div class="blog-card">
+                <div class="blog-image">🎉</div>
+                <div class="blog-content">
+                    <h3 class="blog-title">Trendek 2025: Új esküvői megoldások</h3>
+                    <p class="blog-excerpt">Fedezd fel velünk az esküvői rendezvények legújabb trendjeit és innovatív megoldásait a 2025-ös évre.</p>
+                    <a href="#" class="blog-link">Bővebben →</a>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <img src="sokadik kep.jpg" class="gallery-img" alt="Gyerekek festés közben" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage(this.src)">
+            </div>
+            <div class="blog-card">
+                <div class="blog-image">🎊</div>
+                <div class="blog-content">
+                    <h3 class="blog-title">Céges Bulik: Hogyan sikeres?</h3>
+                    <p class="blog-excerpt">Tippek és trükkök a tökéletes céges rendezvény megszervezéséhez. Minden, amit tudnod kell!</p>
+                    <a href="#" class="blog-link">Bővebben →</a>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <img src="kep.jpg" class="gallery-img" alt="Gyerekek festés közben" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage(this.src)">
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <img src="kep7.jpg" class="gallery-img" alt="Kézműves foglalkozás" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage(this.src)">
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <img src="kep8.jpg" class="gallery-img" alt="Csoportos alkotás" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage(this.src)">
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <img src="kep10.jpeg" class="gallery-img" alt="Rajzolós foglalkozás" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage(this.src)">
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <img src="kep11.jpeg" class="gallery-img" alt="Művészeti kiállítás" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage(this.src)">
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <img src="kep12.jpeg" class="gallery-img" alt="Kreatív foglalkozás" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage(this.src)">
-                </div>
+            </div>
+        </div>
+        <div class="more-blogs">
+            <a href="#" class="btn-primary">További Cikkek →</a>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="section-label">Partyschedule</div>
+        <div class="about-content">
+            <div class="about-images">
+                <div class="about-image">🎪</div>
+                <div class="about-image">🎵</div>
+                <div class="about-image">💡</div>
+                <div class="about-image">🎤</div>
+            </div>
+            <div class="about-text">
+                <h2>Rólunk</h2>
+                <p>Teljes körű kreatív platformként működünk, melynek középpontjában a rendezvények kibontakozása áll.</p>
+                <p>Célunk, hogy maximalizáljuk az eseményekben rejlő potenciált minden téren, legyen szó élő koncertekről vagy digitális platformokon való együttműködésekről.</p>
+                <p>Együtt hódítjuk meg a rendezvények univerzumát.</p>
             </div>
         </div>
     </section>
 
-    <div class="modal fade" id="imageModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <img src="" id="modalImage" class="img-fluid">
+    <section class="performers">
+        <div class="section-label">Partyschedule</div>
+        <h2>Előadóink</h2>
+        <div class="carousel-container">
+            <div class="carousel">
+                <div class="performer-card">
+                    <div class="performer-image">🎤</div>
+                    <div class="performer-name">DJ Alex</div>
+                </div>
+                <div class="performer-card">
+                    <div class="performer-image">🎸</div>
+                    <div class="performer-name">Sunrise Band</div>
+                </div>
+                <div class="performer-card">
+                    <div class="performer-image">🎹</div>
+                    <div class="performer-name">Martin Kiss</div>
+                </div>
+                <div class="performer-card">
+                    <div class="performer-image">🎧</div>
+                    <div class="performer-name">DJ Rhythm</div>
+                </div>
+                <div class="performer-card">
+                    <div class="performer-image">🎺</div>
+                    <div class="performer-name">Jazz Fusion</div>
+                </div>
+                <div class="performer-card">
+                    <div class="performer-image">🎵</div>
+                    <div class="performer-name">Soul Sisters</div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <section id="csatlakozz">
-        <div class="container">
-            <h2 class="section-title">✨ Csatlakozz hozzánk!</h2>
-            <p class="section-subtitle">Szeretnéd, ha gyermeked részt venne klubunk foglalkozásain?</p>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="highlight-box text-center">
-                        <h4 class="mb-4">📝 Jelentkezési űrlap</h4>
-                        <p>Töltsd ki az alábbi űrlapot, és munkatársunk 1-2 munkanapon belül felveszi veled a kapcsolatot!</p>
-                        <p><strong>📍 Helyszín:</strong> Budapest, IX. kerület, Tűzoltó utca 68.</p>
-                        <iframe src="https://forms.gle/hgs28EfQhqnyL2Tw6" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Betöltés...</iframe>
-                    </div>
-                </div>
-            </div>
+        <div class="carousel-dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
         </div>
     </section>
 
-    <section id="kapcsolat">
-        <div class="container">
-            <h2 class="section-title">📧 Kapcsolat</h2>
-            <p class="section-subtitle">Keress minket bizalommal</p>
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="contact-info">
-                        <h4 class="mb-4" style="color: var(--primary-color);">Elérhetőségeink</h4>
-                        <p><i class="fas fa-map-marker-alt"></i> 1094 Budapest, Tűzoltó utca 68.</p>
-                        <p><i class="fas fa-phone"></i> Edina: <a href="tel:+36205232799" style="color: var(--secondary-color);">+36 20 523 2799</a></p>
-                        <p><i class="fas fa-phone"></i> Zita: <a href="tel:+36205236466" style="color: var(--secondary-color);">+36 20 523 6466</a></p>
-                        <p><i class="fas fa-envelope"></i> <a href="mailto:kincsek9@gmail.com" style="color: var(--secondary-color);">kincsek9@gmail.com</a></p>
-                        <p><i class="fas fa-envelope"></i> <a href="mailto:zitasuki0315@gmail.com" style="color: var(--secondary-color);">zitasuki0315@gmail.com</a></p>
-                        
-                        <h5 class="mt-4 mb-3" style="color: var(--primary-color);">Kövess minket!</h5>
-                        <div class="social-links mt-3">
-                            <a href="https://www.facebook.com/profile.php?id=61578372524178" target="_blank" style="font-size: 2rem; margin: 0 0.5rem;"><i class="fab fa-facebook"></i></a>
-                            <a href="https://www.instagram.com/kincsekklub" target="_blank" style="font-size: 2rem; margin: 0 0.5rem;"><i class="fab fa-instagram"></i></a>
-                            <a href="https://www.tiktok.com/@kincsek77" target="_blank" style="font-size: 2rem; margin: 0 0.5rem;"><i class="fab fa-tiktok"></i></a>
-                        </div>
-                    </div>
+    <section id="contact" class="contact">
+        <div class="section-label">Partyschedule</div>
+        <h2>Hogyan Segíthetünk?</h2>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">Név*</label>
+                    <input type="text" id="name" required>
                 </div>
-                <div class="col-md-6">
-                    <div class="contact-info">
-                        <h4 class="mb-4" style="color: var(--primary-color);">Írj nekünk!</h4>
-                        <form id="contactForm">
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Név</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Add meg a neved" required>
-                            <!-- ☝️ Ez a name="name" FONTOS! -->
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email cím</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="pelda@email.hu" required>
-                            <!-- ☝️ Ez a name="email" FONTOS! -->
-                        </div>
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Üzenet</label>
-                            <textarea class="form-control" id="message" name="message" rows="5" placeholder="Írj nekünk..." required></textarea>
-                            <!-- ☝️ Ez a name="message" FONTOS! -->
-                        </div>
-                        <button type="submit" class="btn btn-custom w-100">
-                            <span class="btn-text">Küldés</span>
-                            <span class="btn-loading" style="display: none;">
-                                <i class="fas fa-spinner fa-spin"></i> Küldés...
-                            </span>
-                        </button>
-                    </form>
-                    </div>
+                <div class="form-group">
+                    <label for="email">Email*</label>
+                    <input type="email" id="email" required>
                 </div>
             </div>
-        </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="phone">Telefonszám*</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="event-type">Rendezvény típusa*</label>
+                    <select id="event-type" required>
+                        <option value="">Válassz...</option>
+                        <option value="ceg">Céges rendezvény</option>
+                        <option value="eskuvo">Esküvő</option>
+                        <option value="szulinap">Születésnap</option>
+                        <option value="zene">Zenés est</option>
+                        <option value="ballagas">Ballagás</option>
+                        <option value="egyeb">Egyéb</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="message">Üzenet*</label>
+                <textarea id="message" required placeholder="Meséld el nekünk, miben segíthetünk..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Küldés</button>
+        </form>
     </section>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2025 Kincsek Művészeti Klub. Minden jog fenntartva.</p>
-            <p style="font-size: 0.9rem; margin-top: 1rem;">
-                <a href="#adatkezeles" style="font-size: 1rem; color: white; margin: 0 1rem;">Adatkezelés</a> | 
-                <a href="#aszf" style="font-size: 1rem; color: white; margin: 0 1rem;">ÁSZF</a>
-            </p>
-            <div class="social-links mt-3">
-                <a href="https://www.facebook.com/profile.php?id=61578372524178" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/kincsekklub" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.tiktok.com/@kincsek77" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        <div class="footer-content">
+            <div class="footer-info">
+                <p style="font-weight: 900; font-size: 1.2rem; color: #fff;">PARTYSCHEDULE</p>
+                <p>Email: info@partyschedule.hu | Tel: +36 30 123 4567</p>
+                <p>Budapest, Magyarország</p>
             </div>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook">📘</a>
+                <a href="#" aria-label="Instagram">📷</a>
+                <a href="#" aria-label="TikTok">🎵</a>
+            </div>
+            <p style="margin-top: 2rem; color: #666; font-size: 0.9rem;">&copy; 2024 PartySchedule. Minden jog fenntartva.</p>
         </div>
     </footer>
 
-    <!-- Adatkezelés Modal -->
-    <div class="modal fade" id="adatkezelesModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-scrollable modal-lg">
-            <div class="modal-content">
-                <div class="modal-header" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white;">
-                    <h5 class="modal-title">🔒 Adatkezelési nyilatkozat</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body" style="background: white; color: #333;">
-                    <h5 style="color: var(--primary-color);">1. Adatkezelő</h5>
-                    <p><strong>Név:</strong> Suki Edina<br>
-                    <strong>Székhely:</strong> 5137 Jászkisér, Tompa Mihály utca 4.<br>
-                    <strong>Működési hely:</strong> 1094 Budapest, Tűzoltó utca 68.<br>
-                    <strong>Email:</strong> kincsek9@gmail.com<br>
-                    <strong>Telefon:</strong> +36 20 523 2799</p>
-
-                    <h5 style="color: var(--primary-color);">2. Kezelt adatok köre</h5>
-                    <p>A jelentkezési űrlap kitöltése során az alábbi adatokat kezeljük: Név, Email cím, Telefonszám, Gyermek neve és életkora, Üzenet tartalma.</p>
-
-                    <h5 style="color: var(--primary-color);">3. Adatkezelés célja</h5>
-                    <p>Az adatkezelés célja kizárólag a klubbal kapcsolatos kapcsolatfelvétel, jelentkezések kezelése, valamint a klubbal kapcsolatos információk nyújtása.</p>
-
-                    <h5 style="color: var(--primary-color);">4. Adatkezelés jogalapja</h5>
-                    <p>Az adatkezelés jogalapja a GDPR 6. cikk (1) bekezdés a) pontja szerint az Ön önkéntes hozzájárulása.</p>
-
-                    <h5 style="color: var(--primary-color);">5. Adatkezelés időtartama</h5>
-                    <p>A megadott adatokat a kapcsolatfelvételtől számított 2 évig tároljuk, vagy kérésére hamarabb töröljük.</p>
-
-                    <h5 style="color: var(--primary-color);">6. Érintetti jogok</h5>
-                    <p>Ön jogosult: tájékoztatást kérni az adatairól, kérni adatai helyesbítését, kérni adatai törlését, tiltakozni az adatkezelés ellen, panaszt tenni a Nemzeti Adatvédelmi és Információszabadság Hatóságnál.</p>
-
-                    <h5 style="color: var(--primary-color);">7. Panaszbejelentés</h5>
-                    <p><strong>Nemzeti Adatvédelmi és Információszabadság Hatóság (NAIH):</strong><br>
-                    Cím: 1125 Budapest, Dezső utca 37.<br>
-                    Email: ugyfelszolgalat@naih.hu<br>
-                    Telefon: +36 1 391 1400</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ÁSZF Modal -->
-    <div class="modal fade" id="aszfModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-scrollable modal-lg">
-            <div class="modal-content">
-                <div class="modal-header" style="background: linear-gradient(135deg, var(--secondary-color), var(--accent-color)); color: white;">
-                    <h5 class="modal-title">📋 Általános Szerződési Feltételek</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body" style="background: white; color: #333;">
-                    <h5 style="color: var(--secondary-color);">1. Általános rendelkezések</h5>
-                    <p>Jelen Általános Szerződési Feltételek (ÁSZF) a Kincsek Művészeti Klub (székhely: 1094 Budapest, Tűzoltó utca 68.) által nyújtott szolgáltatásokra vonatkoznak.</p>
-
-                    <h5 style="color: var(--secondary-color);">2. A szolgáltatás tárgya</h5>
-                    <p>A Kincsek Művészeti Klub gyermekek számára művészeti foglalkozásokat, programokat szervez. A szolgáltatás igénybevétele önkéntes.</p>
-
-                    <h5 style="color: var(--secondary-color);">3. Jelentkezés és részvétel</h5>
-                    <p>A klubba való jelentkezés a weboldalon található űrlap kitöltésével történik. A jelentkezés beérkezését követően munkatársunk felveszi Önnel a kapcsolatot a részletekkel kapcsolatban.</p>
-
-                    <h5 style="color: var(--secondary-color);">4. Díjak és fizetési feltételek</h5>
-                    <p>A foglalkozások díjairól és fizetési feltételekről a kapcsolatfelvételt követően adunk tájékoztatást. A díjak változtatásának jogát fenntartjuk.</p>
-
-                    <h5 style="color: var(--secondary-color);">5. Lemondás és visszatérítés</h5>
-                    <p>A foglalkozásokról való lemondás szabályait, valamint a visszatérítési feltételeket a szerződéskötéskor ismertetjük.</p>
-
-                    <h5 style="color: var(--secondary-color);">6. Felelősség</h5>
-                    <p>A foglalkozások alatt a gyermekek felügyeletéről és biztonságáról gondoskodunk. A foglalkozások alatt történt károkért felelősségünk a vonatkozó jogszabályok keretei között áll fenn.</p>
-
-                    <h5 style="color: var(--secondary-color);">7. Kapcsolat</h5>
-                    <p>Kérdés esetén vegye fel velünk a kapcsolatot:<br>
-                    <strong>Email:</strong> kicsek9@gmail.com<br>
-                    <strong>Telefon:</strong> +36 20 523 2799</p>
-
-                    <p style="margin-top: 2rem;"><em>Hatályos: 2025. október 16-tól</em></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        function showImage(src) {
-            document.getElementById('modalImage').src = src;
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Köszönjük megkeresését! Hamarosan jelentkezünk!');
+            e.target.reset();
         }
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const href = this.getAttribute('href');
-                
-                // Modal linkek kezelése
-                if (href === '#adatkezeles') {
-                    new bootstrap.Modal(document.getElementById('adatkezelesModal')).show();
-                    return;
-                }
-                if (href === '#aszf') {
-                    new bootstrap.Modal(document.getElementById('aszfModal')).show();
-                    return;
-                }
-                
-                const target = document.querySelector(href);
+                const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const offsetTop = target.offsetTop - 70;
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
                     });
                 }
             });
         });
 
-        // Navbar átlátszóság változtatása scroll-nál
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(45, 53, 97, 0.98)';
-            } else {
-                navbar.style.background = 'rgba(45, 53, 97, 0.95)';
-            }
-        });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<!-- EmailJS script - illeszd be a </body> elé -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script>
-        emailjs.init("yHdd5Q4LK9vNVJ8d9"); // Ide jön a Public Key az EmailJS-ről
+        // Carousel auto scroll
+        const carousel = document.querySelector('.carousel');
+        const dots = document.querySelectorAll('.dot');
+        let currentIndex = 0;
 
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const btnText = submitBtn.querySelector('.btn-text');
-            const btnLoading = submitBtn.querySelector('.btn-loading');
-            
-            submitBtn.disabled = true;
-            btnText.style.display = 'none';
-            btnLoading.style.display = 'inline';
-            
-            emailjs.sendForm('service_mk3ozra', 'template_gosh0qq', this)
-                .then(function() {
-                    alert('✅ Üzenet sikeresen elküldve!');
-                    document.getElementById('contactForm').reset();
-                    submitBtn.disabled = false;
-                    btnText.style.display = 'inline';
-                    btnLoading.style.display = 'none';
-                }, function(error) {
-                    alert('❌ Hiba történt: ' + error.text);
-                    submitBtn.disabled = false;
-                    btnText.style.display = 'inline';
-                    btnLoading.style.display = 'none';
-                });
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentIndex = index;
+                updateCarousel();
+            });
         });
-    </script>
 
+        function updateCarousel() {
+            const scrollAmount = carousel.offsetWidth * currentIndex;
+            carousel.scrollTo({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+            
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        // Auto scroll carousel
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % dots.length;
+            updateCarousel();
+        }, 5000);
+    </script>
 </body>
 </html>
