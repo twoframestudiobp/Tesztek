@@ -1,14 +1,20 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PartySchedule - Rendezvényszervezés</title>
+    <title>PartySchedule - Event Organization</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
+            width: 100%;
+            margin: 0;
+            padding: 0;
         }
 
         body {
@@ -21,13 +27,7 @@
             padding: 0;
         }
 
-        html {
-            width: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Animált háttér */
+        /* Animated background */
         @keyframes animateBg {
             0% {
                 background-position: 0% 50%;
@@ -40,7 +40,7 @@
             }
         }
 
-        /* Animált gradient csík a tetején - lassabb */
+        /* Animated gradient stripe at the top - slower */
         @keyframes slideGradient {
             0% {
                 background-position: -200% 0;
@@ -288,7 +288,7 @@
             letter-spacing: -1px;
         }
 
-        /* Szolgáltatások */
+        /* Services */
         .services {
             background: #0a0a0a;
         }
@@ -333,7 +333,7 @@
             font-weight: normal;
         }
 
-        /* Csapat szekció */
+        /* Team section */
         .team {
             background: #000;
         }
@@ -400,7 +400,7 @@
             text-transform: uppercase;
         }
 
-        /* Blog szekció */
+        /* Blog section */
         .blog {
             background: #0a0a0a;
         }
@@ -475,7 +475,7 @@
             display: inline-block;
         }
 
-        /* Rólunk szekció */
+        /* About section */
         .about {
             background: #000;
         }
@@ -517,7 +517,7 @@
             font-size: 1.05rem;
         }
 
-        /* Galéria karusszel */
+        /* Gallery carousel */
         .performers {
             background: #0a0a0a;
         }
@@ -592,7 +592,7 @@
             background: #ff00ff;
         }
 
-        /* Kapcsolat */
+        /* Contact */
         .contact {
             background: #000;
         }
@@ -776,17 +776,17 @@
                 <div class="logo-text">partyschedule</div>
             </div>
             <ul>
-                <li><a href="#home">Előadóink</a></li>
-                <li><a href="#services">Rólunk</a></li>
+                <li><a href="#home">Performers</a></li>
+                <li><a href="#services">About Us</a></li>
                 <li><a href="#blog">Blog</a></li>
-                <li><a href="#contact">Hogyan segíthetünk?</a></li>
+                <li><a href="#contact">How Can We Help?</a></li>
             </ul>
             <div class="lang-selector" onclick="toggleLangDropdown()">
-                <span id="currentLang">HU</span> ▼
+                <span id="currentLang">EN</span> ▼
                 <div class="lang-dropdown" id="langDropdown">
-                    <a href="/" style="display: block; padding: 10px 15px; color: #fff; text-decoration: none; border-bottom: 1px solid #333; transition: all 0.3s;">🇭🇺 Magyar (HU)</a>
-                    <a href="/en/" style="display: block; padding: 10px 15px; color: #fff; text-decoration: none; border-bottom: 1px solid #333; transition: all 0.3s;">🇬🇧 English (EN)</a>
-                    <a href="/de/" style="display: block; padding: 10px 15px; color: #fff; text-decoration: none; transition: all 0.3s;">🇩🇪 Deutsch (DE)</a>
+                    <a href="/">🇭🇺 Magyar (HU)</a>
+                    <a href="/en/">🇬🇧 English (EN)</a>
+                    <a href="/de/">🇩🇪 Deutsch (DE)</a>
                 </div>
             </div>
         </nav>
@@ -795,118 +795,118 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="hero-label">Event Group</div>
-            <h1>Rendezvények<br>Otthona</h1>
+            <h1>Events<br>at Home</h1>
             <div class="hero-buttons">
-                <a href="#services" class="btn-primary">Előadóink</a>
-                <a href="#contact" class="btn-secondary">Lépj velünk kapcsolatba</a>
+                <a href="#services" class="btn-primary">Our Performers</a>
+                <a href="#contact" class="btn-secondary">Get in Touch</a>
             </div>
         </div>
     </section>
 
     <section id="services" class="services">
-        <div class="section-label">Partyschedule</div>
-        <h2>Szolgáltatásaink</h2>
+        <div class="section-label">PartySchedule</div>
+        <h2>Our Services</h2>
         <div class="service-grid">
             <div class="service-card">
                 <div class="service-icon">🎪</div>
-                <h3>Céges Rendezvények</h3>
-                <p>Professzionális céges eseményeket szervezünk, konferenciáktól a csapatépítőkig. Teljes körű koordináció és lebonyolítás.</p>
+                <h3>Corporate Events</h3>
+                <p>We organize professional corporate events, from conferences to team building activities. Full coordination and execution.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">💍</div>
-                <h3>Esküvők</h3>
-                <p>Álomesküvőd megvalósítása a tervezéstől a megvalósításig. Minden részletre figyelünk, hogy tökéletes legyen a nagy nap.</p>
+                <h3>Weddings</h3>
+                <p>Realize your dream wedding from planning to execution. We pay attention to every detail to make your special day perfect.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">🎂</div>
-                <h3>Születésnapok</h3>
-                <p>Felejthetetlen születésnapi bulik gyerekeknek és felnőtteknek. Egyedi koncepciók és teljes körű szervezés.</p>
+                <h3>Birthday Parties</h3>
+                <p>Unforgettable birthday celebrations for children and adults. Unique concepts and complete organization.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">🎵</div>
-                <h3>Zenés Estek</h3>
-                <p>Koncertek, DJ partik, zenés események profi hangosítással, fénytechnikával és látványvilággal.</p>
+                <h3>Musical Evenings</h3>
+                <p>Concerts, DJ parties, musical events with professional sound systems, lighting, and visual effects.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">🎓</div>
-                <h3>Ballagások</h3>
-                <p>Iskolai és egyetemi ballagások teljes körű szervezése. Az ünnepségtől a végzős bulival bezárólag.</p>
+                <h3>Graduations</h3>
+                <p>Complete organization of school and university graduations. From the ceremony to the graduation party.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">🎭</div>
-                <h3>Fesztiválok</h3>
-                <p>Nagy volumenű rendezvények komplett logisztikával, technikai háttérrel és színpadi produkcióval.</p>
+                <h3>Festivals</h3>
+                <p>Large-scale events with complete logistics, technical support, and stage production.</p>
             </div>
         </div>
     </section>
 
     <section class="team">
-        <div class="section-label">Partyschedule</div>
-        <h2>A Csapatunk</h2>
+        <div class="section-label">PartySchedule</div>
+        <h2>Our Team</h2>
         <div class="team-grid">
             <div class="team-member">
                 <div class="team-photo">👨</div>
                 <div class="team-info">
-                    <div class="team-name">Nagy Péter</div>
+                    <div class="team-name">Peter Nagy</div>
                     <div class="team-role">Co-Founder & Chief Commercial Officer</div>
-                    <a href="#" class="team-contact">Kapcsolat</a>
+                    <a href="#" class="team-contact">Contact</a>
                 </div>
             </div>
             <div class="team-member">
                 <div class="team-photo">👨</div>
                 <div class="team-info">
-                    <div class="team-name">Kovács András</div>
+                    <div class="team-name">Andras Kovacs</div>
                     <div class="team-role">Co-Founder & A&R Director</div>
-                    <a href="#" class="team-contact">Kapcsolat</a>
+                    <a href="#" class="team-contact">Contact</a>
                 </div>
             </div>
             <div class="team-member">
                 <div class="team-photo">👨</div>
                 <div class="team-info">
-                    <div class="team-name">Szabó Gábor</div>
+                    <div class="team-name">Gabor Szabo</div>
                     <div class="team-role">Co-Founder & Chief Executive Officer</div>
-                    <a href="#" class="team-contact">Kapcsolat</a>
+                    <a href="#" class="team-contact">Contact</a>
                 </div>
             </div>
             <div class="team-member">
                 <div class="team-photo">👨</div>
                 <div class="team-info">
-                    <div class="team-name">Kiss Tamás</div>
+                    <div class="team-name">Tamas Kiss</div>
                     <div class="team-role">Chief Operating Officer</div>
-                    <a href="#" class="team-contact">Kapcsolat</a>
+                    <a href="#" class="team-contact">Contact</a>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="blog" class="blog">
-        <div class="section-label">Partyschedule</div>
+        <div class="section-label">PartySchedule</div>
         <h2>Blog</h2>
         <div class="blog-grid">
             <div class="blog-card">
                 <div class="blog-image">🎉</div>
                 <div class="blog-content">
-                    <h3 class="blog-title">Trendek 2025: Új esküvői megoldások</h3>
-                    <p class="blog-excerpt">Fedezd fel velünk az esküvői rendezvények legújabb trendjeit és innovatív megoldásait a 2025-ös évre.</p>
-                    <a href="#" class="blog-link">Bővebben →</a>
+                    <h3 class="blog-title">Trends 2025: New Wedding Solutions</h3>
+                    <p class="blog-excerpt">Discover the latest trends and innovative solutions for wedding events in 2025 with us.</p>
+                    <a href="#" class="blog-link">Read More →</a>
                 </div>
             </div>
             <div class="blog-card">
                 <div class="blog-image">🎊</div>
                 <div class="blog-content">
-                    <h3 class="blog-title">Céges Bulik: Hogyan sikeres?</h3>
-                    <p class="blog-excerpt">Tippek és trükkök a tökéletes céges rendezvény megszervezéséhez. Minden, amit tudnod kell!</p>
-                    <a href="#" class="blog-link">Bővebben →</a>
+                    <h3 class="blog-title">Corporate Parties: How to Succeed?</h3>
+                    <p class="blog-excerpt">Tips and tricks for organizing the perfect corporate event. Everything you need to know!</p>
+                    <a href="#" class="blog-link">Read More →</a>
                 </div>
             </div>
         </div>
         <div class="more-blogs">
-            <a href="#" class="btn-primary">További Cikkek →</a>
+            <a href="#" class="btn-primary">More Articles →</a>
         </div>
     </section>
 
     <section class="about">
-        <div class="section-label">Partyschedule</div>
+        <div class="section-label">PartySchedule</div>
         <div class="about-content">
             <div class="about-images">
                 <div class="about-image">🎪</div>
@@ -915,17 +915,17 @@
                 <div class="about-image">🎤</div>
             </div>
             <div class="about-text">
-                <h2>Rólunk</h2>
-                <p>Teljes körű kreatív platformként működünk, melynek középpontjában a rendezvények kibontakozása áll.</p>
-                <p>Célunk, hogy maximalizáljuk az eseményekben rejlő potenciált minden téren, legyen szó élő koncertekről vagy digitális platformokon való együttműködésekről.</p>
-                <p>Együtt hódítjuk meg a rendezvények univerzumát.</p>
+                <h2>About Us</h2>
+                <p>We operate as a complete creative platform with a focus on event development.</p>
+                <p>Our goal is to maximize the potential of events in every way, from live concerts to collaborations on digital platforms.</p>
+                <p>Together we conquer the universe of events.</p>
             </div>
         </div>
     </section>
 
     <section class="performers">
-        <div class="section-label">Partyschedule</div>
-        <h2>Előadóink</h2>
+        <div class="section-label">PartySchedule</div>
+        <h2>Our Performers</h2>
         <div class="carousel-container">
             <div class="carousel">
                 <div class="performer-card">
@@ -965,12 +965,12 @@
     </section>
 
     <section id="contact" class="contact">
-        <div class="section-label">Partyschedule</div>
-        <h2>Hogyan Segíthetünk?</h2>
+        <div class="section-label">PartySchedule</div>
+        <h2>How Can We Help?</h2>
         <form class="contact-form" onsubmit="handleSubmit(event)">
             <div class="form-row">
                 <div class="form-group">
-                    <label for="name">Név*</label>
+                    <label for="name">Name*</label>
                     <input type="text" id="name" required>
                 </div>
                 <div class="form-group">
@@ -980,27 +980,27 @@
             </div>
             <div class="form-row">
                 <div class="form-group">
-                    <label for="phone">Telefonszám*</label>
+                    <label for="phone">Phone Number*</label>
                     <input type="tel" id="phone" required>
                 </div>
                 <div class="form-group">
-                    <label for="event-type">Rendezvény típusa*</label>
+                    <label for="event-type">Event Type*</label>
                     <select id="event-type" required>
-                        <option value="">Válassz...</option>
-                        <option value="ceg">Céges rendezvény</option>
-                        <option value="eskuvo">Esküvő</option>
-                        <option value="szulinap">Születésnap</option>
-                        <option value="zene">Zenés est</option>
-                        <option value="ballagas">Ballagás</option>
-                        <option value="egyeb">Egyéb</option>
+                        <option value="">Choose...</option>
+                        <option value="ceg">Corporate Event</option>
+                        <option value="eskuvo">Wedding</option>
+                        <option value="szulinap">Birthday Party</option>
+                        <option value="zene">Musical Evening</option>
+                        <option value="ballagas">Graduation</option>
+                        <option value="egyeb">Other</option>
                     </select>
                 </div>
             </div>
             <div class="form-group">
-                <label for="message">Üzenet*</label>
-                <textarea id="message" required placeholder="Meséld el nekünk, miben segíthetünk..."></textarea>
+                <label for="message">Message*</label>
+                <textarea id="message" required placeholder="Tell us how we can help..."></textarea>
             </div>
-            <button type="submit" class="submit-btn">Küldés</button>
+            <button type="submit" class="submit-btn">Send</button>
         </form>
     </section>
 
@@ -1009,23 +1009,18 @@
             <div class="footer-info">
                 <p style="font-weight: 900; font-size: 1.2rem; color: #fff;">PARTYSCHEDULE</p>
                 <p>Email: info@partyschedule.hu | Tel: +36 30 123 4567</p>
-                <p>Budapest, Magyarország</p>
+                <p>Budapest, Hungary</p>
             </div>
             <div class="social-links">
                 <a href="#" aria-label="Facebook">📘</a>
                 <a href="#" aria-label="Instagram">📷</a>
                 <a href="#" aria-label="TikTok">🎵</a>
             </div>
-            <p style="margin-top: 2rem; color: #666; font-size: 0.9rem;">&copy; 2024 PartySchedule. Minden jog fenntartva.</p>
+            <p style="margin-top: 2rem; color: #666; font-size: 0.9rem;">&copy; 2024 PartySchedule. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        // Navigate to language version
-        function navigateTo(path) {
-            window.location.href = path;
-        }
-
         // Language dropdown toggle
         function toggleLangDropdown() {
             const dropdown = document.getElementById('langDropdown');
@@ -1044,7 +1039,7 @@
 
         function handleSubmit(e) {
             e.preventDefault();
-            alert('Köszönjük megkeresését! Hamarosan jelentkezünk!');
+            alert('Thank you for your inquiry! We will get back to you soon!');
             e.target.reset();
         }
 
